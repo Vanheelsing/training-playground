@@ -11,7 +11,10 @@ pipeline {
             }
         }
     }
-    post { 
+    post {
+    	allways { 
+            	echo 'Allways'
+        }
         success { 
             	echo 'Success'
         }
