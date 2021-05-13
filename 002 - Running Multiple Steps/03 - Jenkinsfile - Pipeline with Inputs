@@ -5,8 +5,8 @@ pipeline {
 		}
 	}
     parameters {
-        	string(NAME: 'NAME', defaultValue: 'Eu', description: 'Who should I say hello to?')
-		string(AGE: 'AGE', defaultValue: '22', description: 'Who should I say hello to?')
+        	string(name: 'NAME', defaultValue: 'Eu', description: 'Who should I say hello to?')
+		string(age: 'AGE', defaultValue: '22', description: 'Who should I say hello to?')
 	}
     stages {
         stage('build') {
