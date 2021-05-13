@@ -1,9 +1,26 @@
 pipeline {
     agent { 
-		docker { 
-			image 'alpine:latest' 
-		}
-	}
-    stages {
+        docker { 
+            image 'alpine:latest' 
+        }
     }
+    stages {
+        stage('Build'){
+        steps{
+            printDate2File('1.txt')
+        }
+    }
+    stage('Test'){
+        steps{
+            sh "grep 2019 1.txt"
+        }
+    }
+    }
+}
+
+ 
+
+def printDate2File(filename = ''){
+    sh "date > $filename"
+    sh "cat $filename"
 }
