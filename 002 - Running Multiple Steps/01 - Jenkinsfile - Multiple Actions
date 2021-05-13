@@ -5,5 +5,17 @@ pipeline {
 		}
 	}
     stages {
+    	stage("first"){
+		steps{
+			imprimeData('data')
+			sh "sleep 10"
+			imprimeData('data')
+		}
+	}
     }
+}
+
+def imprimeData(fileName=''){
+	sh "date > $fileName"
+	sh "cat $fileName"
 }
