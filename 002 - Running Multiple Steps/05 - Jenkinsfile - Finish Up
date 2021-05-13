@@ -12,13 +12,11 @@ pipeline {
         }
     }
     post { 
-        	success { 
-            		echo 'Success'
-        	}
-    	}
-	post { 
-        	failure { 
-            		echo 'Failed'
-        	}
-    	}
+        success { 
+            	echo 'Success'
+        }
+	failure { 
+            	echo 'Failed'
+        }
+    }
 }
