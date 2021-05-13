@@ -8,7 +8,7 @@ pipeline {
 		}
 	}
 	stage("Npm"){
-		agent {docker { image 'npm:latest' }}
+		agent {docker { image 'node:latest' }}
 		steps{
 			sh 'npm --version'
 		}
