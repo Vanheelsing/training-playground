@@ -11,6 +11,9 @@ pipeline {
         stage('build') {
             steps {
                 echo "$NOTIFICATION_EMAIL"
+		script{
+			echo env.NOTIFICATION_EMAIL
+		}
             }
         }
     }
