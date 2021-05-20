@@ -7,11 +7,11 @@ pipeline {
     environment{
     	PROPS='''[{
 		"name":"JAVA",
-		"comand":"echo 'Hello Java'"
+		"command":"echo 'Hello Java'"
 	},
 	{
 		"name":"GIT",
-		"comand":"echo 'Hello Git'"
+		"command":"echo 'Hello Git'"
 	}]'''
     }
     stages {
