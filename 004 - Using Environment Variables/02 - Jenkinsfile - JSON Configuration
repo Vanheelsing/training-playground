@@ -4,11 +4,25 @@ pipeline {
 			image 'alpine:latest' 
 		}
 	}
+    environment{
+    	PROPS='''
+	[
+	{
+		"name":"JAVA"
+		"comand":"echo 'Hello Java'"
+	},
+	{
+		"name":"GIT"
+		"comand":"echo 'Hello Git'"
+	}
+	]
+	'''
+    }
     stages {
         stage('build') {
             steps {
                 script {
-                	def buildConfigs = []
+                	def buildConfigs = readJSON text: env.PROPS
                 	buildConfigs.each{ buildConfig ->
                 		sh "echo '$buildConfig.name' && $buildConfig.command"
 					}
