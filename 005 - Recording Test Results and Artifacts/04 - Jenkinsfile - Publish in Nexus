@@ -1,7 +1,8 @@
 pipeline {
     agent { 
 		docker { 
-			image 'maven:3.3.3' 
+			image 'maven:3.3.3'
+			args '--network training-playground'
 		}
 	}
     stages {
@@ -14,7 +15,14 @@ pipeline {
         }
 	stage('Publish'){
 	    steps{
-	    		sh "mvn deploy:deploy-file -Dfile='005 - Recording Test Results and Artifacts/02 - Java Unit Tests/target/java-app-1.0.0.jar' -Durl='http://nexus:8081/repository/maven-releases/' -s settings-copy.xml"
+	    		sh "mvn deploy:deploy-file -s settings-copy.xml \
+			-Dfile='005 - Recording Test Results and Artifacts/02 - Java Unit Tests/target/java-app-1.0.0.jar' \
+			-Durl='http://nexus:8081/repository/maven-releases/' \
+			-DrepositoryId='maven-releases' \
+			-Dpackaging=jar \
+			-DgroupId=org.some.group \
+			-Dversion=1.0 \
+			-DartifactId='MinhaApp'"
 	    }
 	}
     }
