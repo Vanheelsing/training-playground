@@ -1,14 +1,21 @@
 pipeline {
     agent { 
 		docker { 
-			image 'alpine:latest' 
+			image 'maven:3.3.3' 
 		}
 	}
     stages {
-        stage('tests') {
+        stage('Build') {
             steps {
-                sh ""
+	    	configFileProvider([configFile(fileId: "settings.xml", targetLocation: 'settings-copy.xml')]){
+			sh "mvn install -s settings-copy.xml -f '005 - Recording Test Results and Artifacts/02 - Java Unit Tests'"
+		}
             }
         }
+	stage('Publish'){
+	    steps{
+	    		sh "mvn deploy:deployfile -Dfile='005 - Recording Test Results and Artifacts/02 - Java Unit Tests/target/java-app-1.0.0.jar' -Durl=file://nexus:8081"
+	    }
+	}
     }
 }
