@@ -4,6 +4,9 @@ pipeline {
 			image 'alpine:latest' 
 		}
 	}
+	envrioment{
+		NOTIFICATION_EMAIL='ola@ola.com'
+	}
     stages {
         stage('build') {
             steps {
