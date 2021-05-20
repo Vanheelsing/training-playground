@@ -21,7 +21,7 @@ pipeline {
                 	def buildConfigs = readJSON text: env.PROPS
                 	buildConfigs.each{ buildConfig ->
                 		sh "echo '$buildConfig.name' && $buildConfig.command"
-				stage('$buildConfig.name') {
+				stage("$buildConfig.name") {
 					sh "echo $buildConfig.command"
 				}
 			}
