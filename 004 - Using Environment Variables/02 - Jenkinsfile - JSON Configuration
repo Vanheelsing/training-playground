@@ -5,18 +5,14 @@ pipeline {
 		}
 	}
     environment{
-    	PROPS='''
-	[
-	{
-		"name":"JAVA"
+    	PROPS='''[{
+		"name":"JAVA",
 		"comand":"echo 'Hello Java'"
 	},
 	{
-		"name":"GIT"
+		"name":"GIT",
 		"comand":"echo 'Hello Git'"
-	}
-	]
-	'''
+	}]'''
     }
     stages {
         stage('build') {
