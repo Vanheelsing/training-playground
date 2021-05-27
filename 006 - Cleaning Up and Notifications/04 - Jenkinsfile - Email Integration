@@ -20,9 +20,9 @@ pipeline {
 	stage('htmlEmail') {
             steps {
 	    	sh """
-	    	sed 's#Manifesto.html${PESSOA}#g' 006 - Cleaning Up and Notifications/Manifesto.html
+	    	sed 's#<PARA_O_USER>#${PESSOA}#g' 006 - Cleaning Up and Notifications/Manifesto.html
             	"""
-		def htm=readFile("006 - Cleaning Up and Notifications/Manifesto.html")
+		def htm=readFile("006\ -\ Cleaning\ Up\ and\ Notifications/Manifesto.html")
 		emailext body: htm,
     		subject: 'Test Subject',
     		to: 'rodolfo.martins@celfocus.com'
