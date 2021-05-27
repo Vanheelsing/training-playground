@@ -4,6 +4,9 @@ pipeline {
 			image 'alpine:latest' 
 		}
 	}
+	parameters{
+		text(name: 'PESSOA', defaultValue: 'Rodolfo')
+	}
     stages {
         stage('build') {
             steps {
@@ -16,6 +19,7 @@ pipeline {
         }
 	stage('htmlEmail') {
             steps {
+	    	sh "sed 's/unix/linux/' geekfile.txt"
 		emailext body: 'Test Message',
 		attachmentsPattern: 'text.txt',
     		subject: 'Test Subject',
