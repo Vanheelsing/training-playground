@@ -1,13 +1,20 @@
 pipeline {
     agent { 
-		docker { 
-			image 'alpine:latest' 
+		dockerfile { 
+			filename 'DockerFile_Git'
+       			dir '006 - Cleaning Up and Notifications'
 		}
 	}
     stages {
         stage('build') {
             steps {
-                sh ""
+                sh "data > data.txt"
+            }
+        }
+	stage('reset') {
+            steps {
+                sh "git reset --soft HEAD^"
+		sh "data > data.txt"
             }
         }
     }
