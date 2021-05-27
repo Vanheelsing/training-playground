@@ -5,10 +5,15 @@ pipeline {
 		}
 	}
     stages {
-        stage('build') {
+    	stage('cleanup') {
             steps {
 	    	sh "ls -lta"
 	    	cleanWs()
+		sh "ls -lta"
+            }
+        }
+        stage('build') {
+            steps {
                 sh "date > data.txt"
 		sh "ls -lta"
             }
