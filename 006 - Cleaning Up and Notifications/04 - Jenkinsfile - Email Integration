@@ -26,7 +26,7 @@ pipeline {
 			def htm=readFile("006 - Cleaning Up and Notifications/Manifesto.html")
 			echo htm
 		}
-		emailext body: htm,
+		emailext body: ${FILE,path="006 - Cleaning Up and Notifications/Manifesto.html"},
     		subject: 'Test Subject',
     		to: 'rodolfo.martins@celfocus.com'
             }
