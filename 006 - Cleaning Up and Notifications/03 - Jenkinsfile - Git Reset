@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh "data > data.txt"
+                sh "date > data.txt"
             }
         }
 	stage('reset') {
