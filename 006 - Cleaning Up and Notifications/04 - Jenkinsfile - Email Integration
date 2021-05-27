@@ -9,6 +9,7 @@ pipeline {
             steps {
                 sh "echo 'fiz coisas' > text.txt"
 		emailext body: 'Test Message',
+		attachmentsPattern: 'text.txt',
     		subject: 'Test Subject',
     		to: 'rodolfo.martins@celfocus.com'
             }
