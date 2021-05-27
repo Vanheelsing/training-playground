@@ -13,7 +13,7 @@ pipeline {
         }
 	stage('reset') {
             steps {
-                sh "git reset --soft HEAD^"
+                sh "git reset --hard"
 		sh "data > data.txt"
             }
         }
