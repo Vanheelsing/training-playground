@@ -23,7 +23,7 @@ pipeline {
 	    	sed 's#Manifesto.html${PESSOA}#g' 006 - Cleaning Up and Notifications/Manifesto.html"
             	"""
 		def htm=readFile("006 - Cleaning Up and Notifications/Manifesto.html")
-		emailext body: ${htm},
+		emailext body: htm,
     		subject: 'Test Subject',
     		to: 'rodolfo.martins@celfocus.com'
             }
