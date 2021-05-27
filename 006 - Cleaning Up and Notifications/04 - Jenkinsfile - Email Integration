@@ -20,7 +20,7 @@ pipeline {
 	stage('htmlEmail') {
             steps {
 	    	sh """
-	    	sed 's/<PARA_O_USER>/${PESSOA}/g' "006 - Cleaning Up and Notifications/Manifesto.html"
+	    	sed 's#<PARA_O_USER>#${PESSOA}#g' "006 - Cleaning Up and Notifications/Manifesto.html"
             	"""
 		script{
 			def htm=readFile("006 - Cleaning Up and Notifications/Manifesto.html")
