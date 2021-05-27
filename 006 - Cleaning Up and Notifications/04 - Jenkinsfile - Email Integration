@@ -22,8 +22,7 @@ pipeline {
 	    	sh """
 	    	sed 's#<PARA_O_USER>#${PESSOA}#g' 006 - Cleaning Up and Notifications/Manifesto.html
             	"""
-		sh "mv Manifesto.html ../"
-		def htm=readFile("Manifesto.html")
+		script{def htm=readFile("Manifesto.html")}
 		emailext body: htm,
     		subject: 'Test Subject',
     		to: 'rodolfo.martins@celfocus.com'
