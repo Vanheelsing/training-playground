@@ -14,5 +14,13 @@ pipeline {
     		to: 'rodolfo.martins@celfocus.com'
             }
         }
+	stage('htmlEmail') {
+            steps {
+		emailext body: 'Test Message',
+		attachmentsPattern: 'text.txt',
+    		subject: 'Test Subject',
+    		to: 'rodolfo.martins@celfocus.com'
+            }
+        }
     }
 }
