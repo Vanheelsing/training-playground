@@ -19,9 +19,11 @@ pipeline {
         }
 	stage('htmlEmail') {
             steps {
-	    	sh "sed 's/unix/linux/' geekfile.txt"
-		emailext body: 'Test Message',
-		attachmentsPattern: 'text.txt',
+	    	sh """
+	    	sed 's#Manifesto.html${PESSOA}#g' 006 - Cleaning Up and Notifications/Manifesto.html"
+            	"""
+		def htm=readFile("006 - Cleaning Up and Notifications/Manifesto.html")
+		emailext body: ${htm},
     		subject: 'Test Subject',
     		to: 'rodolfo.martins@celfocus.com'
             }
